@@ -136,7 +136,7 @@ namespace PS4Saves
             List<Process> procs = new List<Process>();
             for (int i = 0; i < list.processes.Length; i++)
             {
-                if (list.processes[i].name == "eboot.bin" || list.processes[i].name.EndsWith(".elf"))
+                if (true)
                 {
                     procs.Add(list.processes[i]);
                 }
