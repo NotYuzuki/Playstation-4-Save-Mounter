@@ -163,6 +163,8 @@ namespace PS4Saves
                 return;
             }
             var pm = ps4.GetProcessMaps(pid);
+            // Add this line
+            File.WriteAllText("maps.json", System.Text.Json.JsonSerializer.Serialize(pm.entries));
             var tmp = pm.FindEntry("libSceSaveData.sprx")?.start;
             if (tmp == null)
             {
