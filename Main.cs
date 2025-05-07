@@ -164,7 +164,12 @@ namespace PS4Saves
             }
             var pm = ps4.GetProcessMaps(pid);
             // Add this line
-            File.WriteAllText("maps.json", System.Text.Json.JsonSerializer.Serialize(pm.entries));
+            string json = System.Text.Json.JsonSerializer.Serialize(pm.entries, new System.Text.Json.JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    IncludeFields = true
+                });
+            File.WriteAllText("processmap.json", json);
             var tmp = pm.FindEntry("libSceSaveData.sprx")?.start;
             if (tmp == null)
             {
